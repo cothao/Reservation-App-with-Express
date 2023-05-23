@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        display: block;
+        background-image: url('https://irgens.com/wp-content/uploads/2020/05/GE-entrance.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    * {
+        /* border: 1px solid black; */
+    }
+    input {
+        border-radius: 3px;
+        border: none;
+        border-bottom: 1px solid blue;
+        width: 15vw;
+        padding-top: 1vw;
+        text-align:start
+    }
+    button {
+        background-color: blue;
+        border: none;
+        border-radius: 10px;
+        padding: 0.7vw;
+        color: white;
+        opacity: 1 !important;
+        cursor: pointer;
+    }
+    button:hover {
+        background-color: darkblue;
+    }
+    img {
+        width: 10vw;
+        text-align: center;
+    }
+    .account {
+        position: absolute;
+        display: flex;
+        align-items: center;
+        margin-top: 16vw;
+        gap: 1vw;
+}
+</style>
+<!-- <script defer type = 'module' src = 'src\app.js'></script> -->
+<body style = 'border: 1px  solid black;'>
+    <section class = 'loginForm' style = 'display: flex ;align-items: center; position: absolute;justify-content: center; height: 25vw; width: 25vw; top: 20%; left: 50%; transform: translate(-50%); border-radius: 30px; background-color: #EBEBEB; opacity: 0.7;'>
+        <div style = 'display: grid; height:100vh; align-items: center; justify-content: center; text-align: center;'>
+            <form id = 'myForm' action="/submit-student-data" method="POST" style = 'display: grid; height:15vw; align-items: center; justify-content: center; text-align: center;'>
+                <img src = 'https://upload.wikimedia.org/wikipedia/commons/d/d9/GE_HealthCare_logo_2023.png'> 
+                <input name = 'Firstname' placeholder = 'Firstname' required></input>
+                <input name = 'Lastname' placeholder = 'Lastname' required></input>
+                <input type = 'password' name = 'Password' placeholder = 'Password' required></input>
+                <input type = 'password' name = 'retypedPassword' placeholder = 'retype password' required></input>
+                <button type = 'submit'>Create</button>
+            </form>
+        </div>
+        <div class = 'account'>
+            <h4>Already have an account?</h4>
+            <a href = '/'>Sign In</a>
+        </div>
+        <!-- <div style = 'display: grid; height:100vh; align-items: center; justify-content: center; text-align: center;'>
+            <form id = 'myForm' action="/submit-student-data" method="get" style = 'display: grid; height:15vh; align-items: center; justify-content: center; text-align: center;'>
+                <input type = 'number' id = 'EmployeeID' name = 'EmployeeID' placeholder = 'EmployeeID'></input>
+                <input name = 'Firstname' placeholder = 'Firstname'></input>
+                <input name = 'lastname' placeholder = 'lastname'></input>
+                <input type = 'number' name = 'Age' placeholder = 'Age'></input>
+                <input name = 'Gender' placeholder = 'Gender'></input>
+                <button type = 'submit'>Delete</button>
+            </form>
+        </div> -->
+        <!-- <h2>Already have an account?</h2> -->
+    </section>
+</body>
+</html>
