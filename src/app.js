@@ -10,6 +10,10 @@ async function logJSONData() {
   return jsonData
 }
 
+window.addEventListener('DOMContentLoaded', () => {
+  logJSONData()
+})
+
 // myForm.addEventListener("submit", async (e) => {
 //   e.preventDefault()
 // });

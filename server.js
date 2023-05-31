@@ -68,7 +68,10 @@ app.post("/signin", function (req, res) {
   `${req.body.firstName[0]}${req.body.lastName}@gehealthcare.com`
   );
   dbOperation.createEmployee(name)
-  console.log(req.body.firstName)
+  dbOperation.getEmployees().then((res) => {
+    // we call the function from the dbOperation file
+    data = res.recordset; // grabs the recordset value in the res object
+  });
 });
 
 app.listen(API_PORT, () => {
