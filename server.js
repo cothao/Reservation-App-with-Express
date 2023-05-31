@@ -3,6 +3,7 @@ const express = require("express");
 dbOperation = require("./dbFiles/dbOperation");
 cors = require("cors");
 const Employee = require("./dbFiles/employee");
+const { createEmployee } = require("./dbFiles/dbOperation");
 let data;
 
 const API_PORT = process.env.PORT || 5500; // the port for the server
@@ -57,36 +58,17 @@ app.get("/createUser", (req, res) => {
 //   }
 // });
 let name;
-app.post("/submit-student-data", function (req, res) {
-  /* this alters what will happen in this page when a post request is sent to it
-in the post request, we are sending the data over to the server */ name =
-    new Employee( // we create a new employee from the form data in the req.body
-      Math.floor(Math.random() * 1000 + data.length),
-      req.body.Firstname,
-      req.body.Lastname,
-      req.body.Password,
-      `${req.body.Firstname[0]}${req.body.Lastname}@gehealthcare.com`
-    );
-  if (
-    !data.find((dat) => {
-      return dat.EmployeeID === name.EmployeeID;
-    })
-  ) {
-    if (req.body.Password === req.body.retypedPassword) {
-      dbOperation.createEmployee(name); // Here we use this data that was put in to a variable to create a new employee and send the info to ssms
-      // res.send(name.Firstname +  ' ' + name.lastname +  " successfully created!");
-      dbOperation.getEmployees().then((res) => {
-        // we call the function from the dbOperation file
-        data = res.recordset; // grabs the recordset value in the res object
-      });
-      res.redirect('/')
-    } else {
-      console.log('must be same')
-    }
-  } else {
-    name.EmployeeID = Math.floor(Math.random() * 1000 + data.length);
-    dbOperation.createEmployee(name);
-  }
+app.post("/signin", function (req, res) {
+  name =
+  new Employee( // we create a new employee from the form data in the req.body
+  Math.floor(Math.random() * 1000 + data.length),
+  req.body.firstName,
+  req.body.lastName,
+  req.body.password,
+  `${req.body.firstName[0]}${req.body.lastName}@gehealthcare.com`
+  );
+  dbOperation.createEmployee(name)
+  console.log(req.body.firstName)
 });
 
 app.listen(API_PORT, () => {

@@ -51,21 +51,22 @@
 }
 </style>
 <!-- <script defer type = 'module' src = 'src\app.js'></script> -->
+<script defer type = 'module' src = 'app.js'></script>
 <body style = 'border: 1px  solid black;'>
     <section class = 'loginForm' style = 'display: flex ;align-items: center; position: absolute;justify-content: center; height: 25vw; width: 25vw; top: 20%; left: 50%; transform: translate(-50%); border-radius: 30px; background-color: #EBEBEB; opacity: 0.7;'>
         <div style = 'display: grid; height:100vh; align-items: center; justify-content: center; text-align: center;'>
-            <form id = 'myForm' action="/submit-student-data" method="POST" style = 'display: grid; height:15vw; align-items: center; justify-content: center; text-align: center;'>
+            <form id = 'create-user-form' action="signin.html" method="get" style = 'display: grid; height:15vw; align-items: center; justify-content: center; text-align: center;'>
                 <img src = 'https://upload.wikimedia.org/wikipedia/commons/d/d9/GE_HealthCare_logo_2023.png'> 
-                <input name = 'Firstname' placeholder = 'Firstname' required></input>
-                <input name = 'Lastname' placeholder = 'Lastname' required></input>
-                <input type = 'password' name = 'Password' placeholder = 'Password' required></input>
+                <input name = 'Firstname' placeholder = 'Firstname' id = 'firstName' required></input>
+                <input name = 'Lastname' placeholder = 'Lastname' id = 'lastName' required></input>
+                <input type = 'password' name = 'Password' placeholder = 'Password' id = 'password' required></input>
                 <input type = 'password' name = 'retypedPassword' placeholder = 'retype password' required></input>
-                <button type = 'submit'>Create</button>
+                <button id = 'create-user' type = 'submit'>Create</button>
             </form>
         </div>
         <div class = 'account'>
             <h4>Already have an account?</h4>
-            <a href = '/'>Sign In</a>
+            <a href = 'signin.html'>Sign In</a>
         </div>
         <!-- <div style = 'display: grid; height:100vh; align-items: center; justify-content: center; text-align: center;'>
             <form id = 'myForm' action="/submit-student-data" method="get" style = 'display: grid; height:15vh; align-items: center; justify-content: center; text-align: center;'>
