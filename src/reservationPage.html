@@ -79,12 +79,29 @@ iframe {
 .calendar {
     width: 50%;
 }
+nav h1 {
+    position: absolute;
+    color: white;
+    left: 80%;
+    font-size: 2em;
+}
+nav a {
+    position: absolute;
+    color: white;
+    left: 90%;
+    font-size: 2em;
+    border: 1px solid;
+    border-color: purple;
+}
 </style>
 <!-- <script defer type = 'module' src = 'src\app.js'></script> -->
+<script defer type = 'module' src = 'app.js'></script>
 
 <body style = 'border: 1px  solid black;'>
     <nav>
-        <img src = 'https://upload.wikimedia.org/wikipedia/commons/d/d9/GE_HealthCare_logo_2023.png'> 
+        <img src = 'https://upload.wikimedia.org/wikipedia/commons/d/d9/GE_HealthCare_logo_2023.png'>
+        <h1 id = 'username'>Welcome, </h1>
+        <a id = 'logout' href = 'signin.html'>LOGOUT</a>
     </nav>
     <div id='calendar'></div>
 </body>
