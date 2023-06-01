@@ -39,13 +39,7 @@
         text-align:start
     }
     button {
-        background-color: blue;
-        border: none;
-        border-radius: 10px;
-        padding: 0.7vw;
-        color: white;
-        opacity: 1 !important;
-        cursor: pointer;
+        
     }
     button:hover {
         background-color: darkblue;
@@ -93,6 +87,47 @@ nav a {
     border: 1px solid;
     border-color: purple;
 }
+#reserve {
+    text-align: center;
+    position: absolute;
+    background-color: beige;
+    width: 30%;
+    height: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1em;
+    border-radius: 10px;
+}
+.date {
+    display: flex;
+    margin-left: 10%;
+}
+#reserve-form {
+    /* left: 50%; */
+    /* transform: translate(15%); */
+    /* display: flex !important; */
+    /* gap: 3vw; */
+    /* border: 1px solid black; */
+    /* overflow: scroll; */
+}
+
+#reserve-form img {
+    width: 30%;
+}
+#reserve-form img:hover {
+    border: 3px solid black;
+    cursor: pointer;
+}
+
+.reserve-img {
+    display: flex;
+    transform: translate(15%);
+    gap: 10%;
+}
+.selected {
+    border: 3px solid black;
+}
 </style>
 <!-- <script defer type = 'module' src = 'src\app.js'></script> -->
 <script defer type = 'module' src = 'app.js'></script>
@@ -103,6 +138,21 @@ nav a {
         <h1 id = 'username'>Welcome, </h1>
         <a id = 'logout' href = 'signin.html'>LOGOUT</a>
     </nav>
-    <div id='calendar'></div>
+    <main role = 'form'>
+        <section id = 'reserve'>
+            <h1>Make you reservation below:</h1>
+            <form id = 'reserve-form'>
+                <div class = 'reserve-img'>
+                    <img id = 'Waukesha' value = 'Waukesha' src = 'https://www.jsonline.com/gcdn/presto/2021/02/24/PMJS/711aa19c-c3aa-4fa8-bb2a-3debf69d6644-GMTI_photoj2004q2m04t09h10400100.jff.JPG?width=660&height=431&fit=crop&format=pjpg&auto=webp'>
+                    <img id = 'researchPark' src = 'https://irgens.com/wp-content/uploads/2020/05/GE-entrance.jpg' value = 'Research Park'>
+                </div>
+                <br><br><br>
+                <div>
+                    <input  id = 'reserveDate' type = 'date'>
+                </div>
+                <button type = 'submit'>RESERVE!</button>
+            </form>
+        </section>
+    </main>
 </body>
 </html>

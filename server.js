@@ -3,7 +3,7 @@ const express = require("express");
 dbOperation = require("./dbFiles/dbOperation");
 cors = require("cors");
 const Employee = require("./dbFiles/employee");
-const { createEmployee } = require("./dbFiles/dbOperation");
+const { createEmployee, updateEmployee } = require("./dbFiles/dbOperation");
 let data;
 
 const API_PORT = process.env.PORT || 5500; // the port for the server
@@ -91,6 +91,15 @@ app.get("/submit-student-data", function (req, res) {
   console.log(res);
 });
 
+app.put('/data', (req, res) => {
+  updateEmployee(req.body)
+  dbOperation.getEmployees().then((res) => { // I call this every request to update the database
+    // we call the function from the dbOperation file
+    data = res.recordset; // grabs the recordset value in the res object
+  });
+}
+)
+
 // app.get("/reservationPage", function (req, res) {
 //   // const focusedData = data.find(dat => {
 //   //   return dat.EmployeeID === name.EmployeeID
@@ -108,5 +117,6 @@ app.get("/submit-student-data", function (req, res) {
 //     console.log(res)
 //   }
 // });
+
 
 module.exports = data

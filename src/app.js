@@ -23,8 +23,8 @@ window.addEventListener('load', () => {
 }, false)
 
 window.addEventListener('DOMContentLoaded', () => {
+  console.log('loaded')
   logJSONData()
-  console.log(currentUser)
 })
 
 // myForm.addEventListener("submit", async (e) => {
@@ -70,11 +70,51 @@ createUser?.addEventListener('submit', (e) => {
   }) // like above, this is why we put it in json format; then grabs a fulfilled promise
 })
 
-logout.addEventListener('click', () => {
+logout?.addEventListener('click', () => {
   localStorage.clear()
 })
 
-greetingName.textContent = `Hello ${JSON.parse(currentUser).Firstname}!`
+// RESERVATION PAGE
+if (window.location.href.slice(0, 46) === "http://127.0.0.1:5501/src/reservationPage.html") {
+  greetingName.textContent = `Hello ${JSON.parse(currentUser)?.Firstname}!`
+  let reserveDate = document.querySelector('#reserveDate')
+  let researchPark = document.querySelector('#researchPark')
+  let reserveForm = document.querySelector('#reserve-form')
+  let selectedLocation
+  let reservationTime
+  let waukesha = document.querySelector("#Waukesha");
+  researchPark.addEventListener('click' ,(e) => {
+    researchPark.classList.add('selected')
+    waukesha.classList.remove('selected')
+    selectedLocation = e.target.getAttribute("value");
+    console.log(selectedLocation);
+  })
+  waukesha.addEventListener('click', (e) => {
+    waukesha.classList.add('selected')
+    researchPark.classList.remove('selected')
+    selectedLocation = e.target.getAttribute("value");
+    console.log(selectedLocation)
+  })
+  reserveDate.addEventListener('change', (e) => {
+    reservationTime = e.target.value
+    console.log(e.target.value)
+  })
+  reserveForm.addEventListener('submit', (e) => {
+    e.preventDefault()
+    fetch("http://localhost:5500/data", {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({
+        userID: JSON.parse(currentUser).EmployeeID,
+        location: selectedLocation ? selectedLocation : null,
+        time: reservationTime.toString(),
+        cubicle: null
+      })
+    });
+  })
+}
 
 class Employee {
   constructor(EmployeeID, Firstname, lastname, Age, Gender) {

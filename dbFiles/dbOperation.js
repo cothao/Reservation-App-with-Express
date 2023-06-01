@@ -53,8 +53,23 @@ code until the data is loaded in */
   }
 };
 
+const updateEmployee = async (Employee) => {
+  try {
+    let pool = await sqlConnectToServer.connect(config);
+    let employees = pool.request().query(
+      `UPDATE EmployeeDemographics SET [Reservation] = 'Yes', [Location] = '${Employee.location}', [Cubicle] = '${Employee.cubicle}', [Time] = '${Employee.time}' WHERE EmployeeID = ${Employee.userID}`
+    )
+    console.log(employees)
+    return employees
+  }
+  catch (error) {
+    console.log(error.message)
+  }
+}
+
 module.exports =  { // we then export the function
     getEmployees,
     createEmployee,
-    deleteEmployee
+    deleteEmployee,
+    updateEmployee
 }
