@@ -25,7 +25,7 @@ code until the data is loaded in */
     let employees = pool
       .request()
       .query(
-        `INSERT INTO EmployeeDemographics VALUES (${Employee.EmployeeID}, '${Employee.Firstname}', '${Employee.lastname}', '${Employee.password}', '${Employee.email}')` //Here we insert our schema
+        `INSERT INTO EmployeeDemographics VALUES (${Employee.EmployeeID}, '${Employee.Firstname}', '${Employee.lastname}', '${Employee.password}', '${Employee.email}', 'No', 'N/A', 'N/A', 'N/A')` //Here we insert our schema
       ); //this uses the query method to query with SQL
     console.log(employees);
     return employees;
