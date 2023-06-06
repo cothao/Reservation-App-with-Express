@@ -1,7 +1,7 @@
 const config = { // this is the server info we need to connect it
   user: "Collin",
   password: "123",
-  server: "DESKTOP-CHB8DOQ",
+  server: "192.168.0.147",
   database: 'SQL Tutorial',
   options: {
     trustServerCertificate: true,
