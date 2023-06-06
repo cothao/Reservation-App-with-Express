@@ -82,7 +82,15 @@ if (window.location.href.slice(0, 46) === "http://127.0.0.1:5501/src/reservation
   let reserveForm = document.querySelector('#reserve-form')
   let selectedLocation
   let reservationTime
+  let reserveTime = document.querySelector('#time')
+  let time
   let waukesha = document.querySelector("#Waukesha");
+  let reserveButton = document.querySelector('#reserveButton')
+  let opacity = document.querySelector('.opacity')
+  let reserveModal = document.querySelector('#reserve-modal')
+  let yes = document.querySelector('#yes')
+  let no = document.querySelector("#no");
+  let cubicle
   researchPark.addEventListener('click' ,(e) => {
     researchPark.classList.add('selected')
     waukesha.classList.remove('selected')
@@ -99,8 +107,33 @@ if (window.location.href.slice(0, 46) === "http://127.0.0.1:5501/src/reservation
     reservationTime = e.target.value
     console.log(e.target.value)
   })
+  reserveTime.addEventListener('change', (e) => {
+    time = e.target.value
+  })
+  reserveButton.addEventListener('click', (e) => {
+    e.preventDefault()
+    document.querySelector('#location').textContent = `Location: ${selectedLocation}`
+    document.querySelector('#date').textContent = `Date: ${reservationTime}`
+    document.querySelector("#reserveTime").textContent = `time: ${time}`;
+    document.querySelector("#cubicle").textContent = `Cubicle: ${cubicle ? cubicle : 'Null'}`
+    opacity.classList.toggle('hidden')
+    reserveModal.classList.toggle('hidden')
+  })
+  opacity.addEventListener('click', () => {
+    opacity.classList.toggle('hidden')
+    reserveModal.classList.toggle("hidden");
+  })
+  no.addEventListener('click', (e) => {
+    opacity.classList.toggle("hidden");
+    reserveModal.classList.toggle("hidden");
+  })
+  yes.addEventListener("click", (e) => {
+    opacity.classList.toggle("hidden");
+    reserveModal.classList.toggle("hidden");
+  });
   reserveForm.addEventListener('submit', (e) => {
     e.preventDefault()
+
     fetch("http://localhost:5500/data", {
       method: "PUT",
       headers: {
@@ -109,7 +142,8 @@ if (window.location.href.slice(0, 46) === "http://127.0.0.1:5501/src/reservation
       body: JSON.stringify({
         userID: JSON.parse(currentUser).EmployeeID,
         location: selectedLocation ? selectedLocation : null,
-        time: reservationTime.toString(),
+        date: reservationTime.toString(),
+        time: time.toString(),
         cubicle: null
       })
     });

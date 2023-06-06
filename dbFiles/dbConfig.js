@@ -1,6 +1,6 @@
 const config = { // this is the server info we need to connect it
-  user: "CodingWithKevin",
-  password: "fue",
+  user: "Collin",
+  password: "123",
   server: "DESKTOP-CHB8DOQ",
   database: 'SQL Tutorial',
   options: {

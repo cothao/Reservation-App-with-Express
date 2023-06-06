@@ -128,6 +128,63 @@ nav a {
 .selected {
     border: 3px solid black;
 }
+
+#reserve-modal {
+    position: absolute;
+    background-color: beige;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid;
+    width: 35%;
+    height: auto;
+}
+
+
+.yesorno {
+    display: flex;
+    justify-content: center;
+    gap: 10%;
+}
+
+.opacity {
+    top: 0%;
+    position: absolute;
+    width: 99.9vw;
+    height: 99.99vh;
+    background-color: black;
+    opacity: 0.5;
+}
+
+.hidden {
+    display: none;
+}
+
+.modal-div h1 {
+    font-size: 15px;
+}
+
+.modal-div {
+    /* text-align: center; */
+}
+
+.modal-div div {
+    text-align: center;
+    /* display: flex; */
+}
+nav div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#username {
+    font-size: small;
+}
+
+#logout {
+    font-size: small;
+}
 </style>
 <!-- <script defer type = 'module' src = 'src\app.js'></script> -->
 <script defer type = 'module' src = 'app.js'></script>
@@ -135,12 +192,14 @@ nav a {
 <body style = 'border: 1px  solid black;'>
     <nav>
         <img src = 'https://upload.wikimedia.org/wikipedia/commons/d/d9/GE_HealthCare_logo_2023.png'>
-        <h1 id = 'username'>Welcome, </h1>
-        <a id = 'logout' href = 'signin.html'>LOGOUT</a>
+        <div>
+            <h1 id = 'username'>Welcome, </h1>
+            <a id = 'logout' href = 'signin.html'>LOGOUT</a>
+        </div>
     </nav>
     <main role = 'form'>
         <section id = 'reserve'>
-            <h1>Make you reservation below:</h1>
+            <h1>Make your reservation below:</h1>
             <form id = 'reserve-form'>
                 <div class = 'reserve-img'>
                     <img id = 'Waukesha' value = 'Waukesha' src = 'https://www.jsonline.com/gcdn/presto/2021/02/24/PMJS/711aa19c-c3aa-4fa8-bb2a-3debf69d6644-GMTI_photoj2004q2m04t09h10400100.jff.JPG?width=660&height=431&fit=crop&format=pjpg&auto=webp'>
@@ -150,9 +209,38 @@ nav a {
                 <div>
                     <input  id = 'reserveDate' type = 'date'>
                 </div>
-                <button type = 'submit'>RESERVE!</button>
+                <div>
+                    <input type="time" id="time" min="09:00" max="18:00" required>
+                </div>
+                <button id = 'reserveButton'>RESERVE!</button>
             </form>
         </section>
     </main>
+    <div class ='opacity hidden'></div>
+    <div role ='modal' id = 'reserve-modal' class = 'hidden'>
+        <div class = 'modal-div'>
+            <div>
+                <h1 id = 'location'>
+                    Location:
+                </h1>
+                <h1 id = 'date'>
+                </h1>
+                <h1 id = 'reserveTime'>
+
+                </h1>
+                <h1 id = 'cubicle'>
+                    Cubicle
+                </h1>
+                <h2>
+                    Is this correct?
+                </h2>
+            </div>
+        </div>
+        <div class = 'yesorno'>
+            <button id = 'yes' form = 'reserve-form' type = 'submit'>Yes</button>
+            <button id = 'no'>No</button>
+        </div>
+    </div>
+
 </body>
 </html>

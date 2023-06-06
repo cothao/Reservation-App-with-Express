@@ -25,7 +25,7 @@ code until the data is loaded in */
     let employees = pool
       .request()
       .query(
-        `INSERT INTO EmployeeDemographics VALUES (${Employee.EmployeeID}, '${Employee.Firstname}', '${Employee.lastname}', '${Employee.password}', '${Employee.email}', 'No', 'N/A', 'N/A', 'N/A')` //Here we insert our schema
+        `INSERT INTO EmployeeDemographics VALUES (${Employee.EmployeeID}, '${Employee.Firstname}', '${Employee.lastname}', '${Employee.password}', '${Employee.email}', 'No', 'N/A', 'N/A', 'N/A', 'N/A')` //Here we insert our schema
       ); //this uses the query method to query with SQL
     console.log(employees);
     return employees;
@@ -57,7 +57,7 @@ const updateEmployee = async (Employee) => {
   try {
     let pool = await sqlConnectToServer.connect(config);
     let employees = pool.request().query(
-      `UPDATE EmployeeDemographics SET [Reservation] = 'Yes', [Location] = '${Employee.location}', [Cubicle] = '${Employee.cubicle}', [Time] = '${Employee.time}' WHERE EmployeeID = ${Employee.userID}`
+      `UPDATE EmployeeDemographics SET [Reservation] = 'Yes', [Location] = '${Employee.location}', [Cubicle] = '${Employee.cubicle}', [Date] = '${Employee.date}', [Time] = '${Employee.time}' WHERE EmployeeID = ${Employee.userID}`
     )
     console.log(employees)
     return employees
