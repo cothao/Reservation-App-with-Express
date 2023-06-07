@@ -23,6 +23,7 @@ app.get("/data", function (req, res) {
   res.send({
     result: data,
   });
+  console.log('hey')
 });
 
 dbOperation.getEmployees().then((res) => {
@@ -76,6 +77,7 @@ app.post("/data", function (req, res) {
     res.send({
       result: data,
     });
+    console.log('hey')
   });
 });
 
@@ -102,11 +104,13 @@ app.put('/data', (req, res) => {
     // we call the function from the dbOperation file
     data = res.recordset; // grabs the recordset value in the res object
   });
+  console.log(data)
   app.get("/data", function (req, res) {
     //send to quit
     res.send({
       result: data,
     });
+    console.log('hey')
   });
 }
 )
