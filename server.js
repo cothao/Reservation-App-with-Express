@@ -20,6 +20,10 @@ app.post("/api", function (req, res) {
 
 app.get("/data", function (req, res) {
   //send to quit
+  dbOperation.getEmployees().then((res) => {
+    // we call the function from the dbOperation file
+    data = res.recordset; // grabs the recordset value in the res object
+  });
   res.send({
     result: data,
   });
@@ -77,7 +81,7 @@ app.post("/data", function (req, res) {
     res.send({
       result: data,
     });
-    console.log('hey')
+    console.log('golly')
   });
 });
 
