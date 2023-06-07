@@ -248,6 +248,18 @@ nav div {
     font-size: 0.9em;
 }
 
+#reserve-info {
+    display: flex;
+    border: 1px solid;
+    background-color: rgb(235,235,235, 0.7);
+    /* word-spacing: 1vw; */
+    gap: 10vw;
+}
+#reserve-info h1{
+    /* word-spacing: 1vw; */
+    font-size: 1em;
+}
+
 @keyframes slidedown {
     from {
         transform: translateY(-80%)
@@ -290,57 +302,8 @@ nav div {
             <a id = 'logout' href = 'signin.html'>LOGOUT</a>
         </div>
     </nav>
-    <main role = 'form'>
-        <section id = 'reserve'>
-            <h1>Make your reservation below:</h1>
-            <form id = 'reserve-form'>
-                <div class = 'reserve-img'>
-                    <img id = 'Waukesha' value = 'Waukesha' src = 'https://www.jsonline.com/gcdn/presto/2021/02/24/PMJS/711aa19c-c3aa-4fa8-bb2a-3debf69d6644-GMTI_photoj2004q2m04t09h10400100.jff.JPG?width=660&height=431&fit=crop&format=pjpg&auto=webp'>
-                    <img id = 'researchPark' src = 'https://irgens.com/wp-content/uploads/2020/05/GE-entrance.jpg' value = 'Research Park'>
-                </div>
-                <br><br><br>
-                <div>
-                    <input  id = 'reserveDate' type = 'date'>
-                </div>
-                <div>
-                    <input type="time" id="time" min="09:00" max="18:00" required>
-                </div>
-                <br>
-                <button id = 'reserveButton'>RESERVE!</button>
-            </form>
-        </section>
-    </main>
-    <div class ='opacity hidden'></div>
-    <div role ='modal' id = 'reserve-modal' class = 'hidden'>
-        <div class = 'modal-div'>
-            <div>
-                <h1 id = 'location'>
-                    Location:
-                </h1>
-                <h1 id = 'date'>
-                </h1>
-                <h1 id = 'reserveTime'>
+    <div id ='reserve-data'>
 
-                </h1>
-                <h1 id = 'cubicle'>
-                    Cubicle
-                </h1>
-                <h2>
-                    Is this correct?
-                </h2>
-            </div>
-        </div>
-        <div class = 'yesorno'>
-            <button id = 'yes' form = 'reserve-form' type = 'submit'>Yes</button>
-            <button id = 'no'>No</button>
-        </div>
     </div>
-<div id = 'message-tab'>
-    <h1>Your reservation has been made!</h1>
-</div>
-<section role = 'show-reservation' id = 'reservation-tab' class = 'slidedown'>
-    <br>
-<p id = 'reservation-info'></p>
-</section>
 </body>
 </html>

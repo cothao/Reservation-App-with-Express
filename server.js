@@ -20,7 +20,6 @@ app.post("/api", function (req, res) {
 
 app.get("/data", function (req, res) {
   //send to quit
-  console.log("Called quit");
   res.send({
     result: data,
   });
@@ -58,7 +57,7 @@ app.get("/createUser", (req, res) => {
 //   }
 // });
 let name;
-app.post("/signin", function (req, res) {
+app.post("/data", function (req, res) {
   name =
   new Employee( // we create a new employee from the form data in the req.body
   Math.floor(Math.random() * 1000 + data.length),
@@ -71,6 +70,12 @@ app.post("/signin", function (req, res) {
   dbOperation.getEmployees().then((res) => {
     // we call the function from the dbOperation file
     data = res.recordset; // grabs the recordset value in the res object
+  });
+  app.get("/data", function (req, res) {
+    //send to quit
+    res.send({
+      result: data,
+    });
   });
 });
 
@@ -93,9 +98,15 @@ app.get("/submit-student-data", function (req, res) {
 
 app.put('/data', (req, res) => {
   updateEmployee(req.body)
-  dbOperation.getEmployees().then((res) => { // I call this every request to update the database
+  dbOperation.getEmployees().then((res) => {
     // we call the function from the dbOperation file
     data = res.recordset; // grabs the recordset value in the res object
+  });
+  app.get("/data", function (req, res) {
+    //send to quit
+    res.send({
+      result: data,
+    });
   });
 }
 )

@@ -63,7 +63,7 @@ createUser?.addEventListener("submit", (e) => {
   const nameInput = firstName.value;
   const nameInputLast = lastName.value;
   const usersPassword = userPassword.value;
-  fetch("http://localhost:5500/signin", {
+  fetch("http://localhost:5500/data", {
     method: "POST",
     headers: {
       "content-type": "application/json",
@@ -112,8 +112,15 @@ if (
   let yes = document.querySelector("#yes");
   let no = document.querySelector("#no");
   let cubicle;
+  let nav = document.querySelector("#nav");
   let tab = document.querySelector("#message-tab");
   let reservationTab = document.querySelector("#reservation-tab");
+  if (user2.Admin === "Yes") {
+    nav.insertAdjacentHTML(
+      "beforeend",
+      "<a href = './adminPanel.html' id = 'admin-button'>Admin Panel</a>"
+    );
+  }
   reservationTab.addEventListener("click", () => {
     reservationTab.classList.toggle("slideup");
     reservationTab.classList.toggle("slidedown");
@@ -187,12 +194,35 @@ if (
       tab.classList.remove("slideout");
       tab.classList.remove("slidein");
     }, 4000);
+    user2.Reservation = "Yes";
     user2.Location = selectedLocation;
     user2.Date = reservationTime;
     user2.Time = time;
-    localStorage.setItem('currentUser', JSON.stringify(user2))
+    localStorage.setItem("currentUser", JSON.stringify(user2));
     reservationInfo.textContent = `${user2.Location} on the day of ${user2.Date} at ${user2.Time}`;
   });
+}
+
+// ADMIN PAGE
+if (window.location.href === "http://127.0.0.1:5501/src/adminPanel.html") {
+  let reservedata = document.querySelector("#reserve-data");
+  greetingName.textContent = `Hello ${JSON.parse(currentUser)?.Firstname}!`;
+  nav.insertAdjacentHTML(
+    "beforeend",
+    "<a href = './adminPanel.html' id = 'admin-button'>Admin Panel</a>"
+  );
+  window.onload = async () => {
+    let results = await logJSONData();
+    results?.result?.forEach((obj) => {
+      if (obj?.Reservation === "Yes") {
+        reservedata.insertAdjacentHTML(
+          "afterbegin",
+          `<div id = 'reserve-info'> <h1> Name: ${obj?.Firstname} ${obj?.Lastname} </h1> <h1> Employee ID: ${obj?.EmployeeID} </h1> <h1> Location: ${obj?.Location} </h1> <h1> Cubicle: ${obj?.Cubicle} </h1> <h1>Date: ${obj?.Date} </h1> <h1>Time: ${obj?.Time} </h1> </div>`
+        );
+      }
+    });
+    console.log(results?.result);
+  };
 }
 
 class Employee {
