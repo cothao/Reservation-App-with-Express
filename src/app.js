@@ -8,7 +8,7 @@ const logout = document.querySelector("#logout");
 const email = document.querySelector('#email')
 
 async function logJSONData() {
-  const response = await fetch("http://localhost:5500/data");
+  const response = await fetch("192.168.0.149:5500/data");
   const jsonData = await response.json();
   return jsonData;
 }
