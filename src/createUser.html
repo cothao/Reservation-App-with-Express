@@ -46,22 +46,31 @@
         position: absolute;
         display: flex;
         align-items: center;
-        margin-top: 16vw;
+        margin-top: 22vw;
         gap: 1vw;
 }
 </style>
 <!-- <script defer type = 'module' src = 'src\app.js'></script> -->
 <script defer type = 'module' src = 'app.js'></script>
+<script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js">
+</script>
+<script type="text/javascript">
+   (function(){
+      emailjs.init("MgxN-PRYibA3SbyxW");
+   })();
+</script>
 <body style = 'border: 1px  solid black;'>
     <section class = 'loginForm' style = 'display: flex ;align-items: center; position: absolute;justify-content: center; height: 25vw; width: 25vw; top: 20%; left: 50%; transform: translate(-50%); border-radius: 30px; background-color: #EBEBEB; opacity: 0.7;'>
         <div style = 'display: grid; height:100vh; align-items: center; justify-content: center; text-align: center;'>
             <form id = 'create-user-form' action="signin.html" method="get" style = 'display: grid; height:15vw; align-items: center; justify-content: center; text-align: center;'>
-                <img src = 'https://upload.wikimedia.org/wikipedia/commons/d/d9/GE_HealthCare_logo_2023.png'> 
+                <img src = 'https://upload.wikimedia.org/wikipedia/commons/d/d9/GE_HealthCare_logo_2023.png'>
+                <input name = 'Email' placeholder = 'Email' id = 'email' required></input>
                 <input name = 'Firstname' placeholder = 'Firstname' id = 'firstName' required></input>
                 <input name = 'Lastname' placeholder = 'Lastname' id = 'lastName' required></input>
                 <input type = 'password' name = 'Password' placeholder = 'Password' id = 'password' required></input>
                 <input type = 'password' name = 'retypedPassword' placeholder = 'retype password' required></input>
-                <button id = 'create-user' type = 'submit'>Create</button>
+                <button id = 'create-user' type = 'submit' href = 'signin.html'>Create</button>
             </form>
         </div>
         <div class = 'account'>
@@ -81,4 +90,5 @@
         <!-- <h2>Already have an account?</h2> -->
     </section>
 </body>
+
 </html>

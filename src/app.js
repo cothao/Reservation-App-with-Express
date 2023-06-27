@@ -5,6 +5,7 @@ const lastName = document.querySelector("#lastName");
 const userPassword = document.querySelector("#password");
 const greetingName = document.querySelector("#username");
 const logout = document.querySelector("#logout");
+const email = document.querySelector('#email')
 
 async function logJSONData() {
   const response = await fetch("http://localhost:5500/data");
@@ -60,9 +61,27 @@ myForm?.addEventListener("submit", async (e) => {
 });
 
 createUser?.addEventListener("submit", (e) => {
+  e.preventDefault()
   const nameInput = firstName.value;
+  const emailInput = email.value
   const nameInputLast = lastName.value;
   const usersPassword = userPassword.value;
+  emailjs
+    .send("service_hrji7ia", "template_js23dyk", {
+      to_email: emailInput,
+      to_name: nameInput,
+      Email: `${nameInput[0]}${nameInputLast}@gehealthcare.com`,
+      Password: usersPassword
+    })
+    .then(
+      function (response) {
+        console.log(response);
+        console.log("SUCCESS!", response.status, response.text);
+      },
+      function (error) {
+        console.log("FAILED...", error);
+      }
+    );
   fetch("http://localhost:5500/data", {
     method: "POST",
     headers: {
@@ -89,7 +108,8 @@ logout?.addEventListener("click", () => {
 // RESERVATION PAGE
 if (
   window.location.href.slice(0, 46) ===
-  "http://127.0.0.1:5501/src/reservationPage.html"
+    "http://127.0.0.1:5501/src/reservationPage.html" ||
+  "http://192.168.0.149:5501/src/reservationPage.html"
 ) {
   let user2 = JSON.parse(currentUser);
   greetingName.textContent = `Hello ${JSON.parse(currentUser)?.Firstname}!`;
@@ -211,7 +231,7 @@ if (window.location.href === "http://127.0.0.1:5501/src/adminPanel.html") {
     "beforeend",
     "<a href = './adminPanel.html' id = 'admin-button'>Admin Panel</a>"
   );
-  window.onload = async () => {
+  (async () => {
     let results = await logJSONData();
     results?.result?.forEach((obj) => {
       if (obj?.Reservation === "Yes") {
@@ -222,7 +242,7 @@ if (window.location.href === "http://127.0.0.1:5501/src/adminPanel.html") {
       }
     });
     console.log(results?.result);
-  };
+  })();
 }
 
 class Employee {
