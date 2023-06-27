@@ -8,7 +8,7 @@ const logout = document.querySelector("#logout");
 const email = document.querySelector('#email')
 
 async function logJSONData() {
-  const response = await fetch("192.168.0.149:5500/data");
+  const response = await fetch("http://192.168.0.149:5500/data");
   const jsonData = await response.json();
   return jsonData;
 }
@@ -44,7 +44,7 @@ myForm?.addEventListener("submit", async (e) => {
 
   let uso = await logJSONData(); /* this function returns json data that
   we await for, we then await the data in this function call so that it may return */
-
+console.log(uso)
   // Here I set the user to be the user where the submitted password and email from the form is found in the sql database
   let user = uso.result?.find((data) => {
     return (
